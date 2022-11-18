@@ -1,5 +1,6 @@
 package com.example.chatapp.auth
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.example.chatapp.R
@@ -15,5 +16,17 @@ class IntroActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        binding.loginBtn.setOnClickListener {
+            val intent  = Intent(this, LoginActivity::class.java)
+            startActivity(intent)
+
+        }
+
+        binding.joinBtn.setOnClickListener{
+            val intent  = Intent(this, JoinActivity::class.java)
+            startActivity(intent)
+
+        }
     }
 }

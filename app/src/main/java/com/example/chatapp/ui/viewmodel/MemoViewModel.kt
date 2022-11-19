@@ -93,20 +93,20 @@ class MemoViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    fun depositAll(memoDatabase: MemoDatabase, year: Int, month: Int, day: Int): Int {
-        val prices = ArrayList<Int>()
-
-        viewModelScope.launch(Dispatchers.IO) {
-            val max = memoDatabase.memoDao().getTodayAll(year, month, day)
-            if(max.isNotEmpty()){
-                for (i in max.indices) {
-                    val price = max[i].deposit
-                    prices.add(price)
-                }
-            }
-        }
-        return prices.sum()
-    }
+//    fun depositAll(memoDatabase: MemoDatabase, year: Int, month: Int, day: Int): Int {
+//        val prices = ArrayList<Int>()
+//
+//        viewModelScope.launch(Dispatchers.IO) {
+//            val max = memoDatabase.memoDao().getTodayAll(year, month, day)
+//            if(max.isNotEmpty()){
+//                for (i in max.indices) {
+//                    val price = max[i].deposit
+//                    prices.add(price)
+//                }
+//            }
+//        }
+//        return prices.sum()
+//    }
 
 
 

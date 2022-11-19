@@ -1,17 +1,18 @@
 package com.example.chatapp.ui.view.activity
 
+import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
-import com.example.chatapp.R
+import androidx.appcompat.app.AppCompatActivity
 import com.example.chatapp.data.model.Memo
 import com.example.chatapp.databinding.ActivityAccountAddBinding
 import com.example.chatapp.ui.viewmodel.MemoViewModel
 import java.util.*
+
 
 class AccountAddActivity : AppCompatActivity() {
 
@@ -21,10 +22,10 @@ class AccountAddActivity : AppCompatActivity() {
     }
     private val MemoViewModel: MemoViewModel by viewModels()
 
-    private val cal = Calendar.getInstance()
-    private val deposit = 0
-    private val withdraw = 0
     private var classify = 1
+    private val cal = Calendar.getInstance()
+    private var hour = cal.get(Calendar.HOUR_OF_DAY)
+    private var minute = cal.get(Calendar.MINUTE)
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,6 +39,7 @@ class AccountAddActivity : AppCompatActivity() {
         binding.year.text = year.toString()
         binding.month.text = month.toString()
         binding.day.text = day.toString()
+        binding.time.text = String.format(Locale.KOREA, "%02d:%02d",hour,minute)
 
         binding.depositicon.setOnClickListener{
             binding.main.text = "수입"
@@ -55,33 +57,36 @@ class AccountAddActivity : AppCompatActivity() {
             classify = 1
         }
 
+        binding.time.setOnClickListener {
+            getTime()
+        }
+
         binding.fab.setOnClickListener {
 
             val category = binding.category.text.toString()
             val description = binding.description.text.toString()
             val amount = binding.amount.text.toString().toInt()
 
-            if (title.isEmpty()) {
+            if (category.isEmpty()) {
 
                 Toast.makeText(this, "분류를 입력해주세요", Toast.LENGTH_SHORT).show()
 
-            } else if(amount==0){
+            } else if(binding.amount.text.isEmpty()){
 
                 Toast.makeText(this, "금액을 입력해주세요", Toast.LENGTH_SHORT).show()
 
             } else {
 
-
                 if(classify==0){
 
-                    val memo = Memo(0, category, description, amount,0, year, month, day)
+                    val memo = Memo(0, category, description, amount,0,hour,minute, year, month, day)
                     MemoViewModel.addMemo(memo)
                     Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
                     finish()
 
                 } else if(classify==1){
 
-                    val memo = Memo(0,category, description, 0, amount, year, month, day)
+                    val memo = Memo(0,category, description, 0, amount,hour,minute, year, month, day)
                     MemoViewModel.addMemo(memo)
                     Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
                     finish()
@@ -91,6 +96,19 @@ class AccountAddActivity : AppCompatActivity() {
             }
 
         }
+
+    }
+
+    private fun getTime(){
+
+        val timeSetListener = TimePickerDialog.OnTimeSetListener { timePicker, selectedHour, selectedMinute ->
+            hour = selectedHour
+            minute = selectedMinute
+
+            binding.time.text = String.format(Locale.KOREA, "%02d:%02d",hour,minute)
+        }
+
+        TimePickerDialog(this, timeSetListener, hour, minute, true).show()
 
     }
 }

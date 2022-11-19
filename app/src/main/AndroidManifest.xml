@@ -14,6 +14,11 @@
         android:theme="@style/Theme.Chatapp"
         tools:targetApi="31">
         <activity
+            android:name=".AccountInsideActivity"
+            android:exported="false"
+            android:label="@string/title_activity_account_inside"
+            android:theme="@style/Theme.Chatapp.NoActionBar" />
+        <activity
             android:name=".ui.view.activity.AccountAddActivity"
             android:exported="false" />
         <activity

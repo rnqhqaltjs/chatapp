@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp">
+            android:layout_marginBottom="5dp">
 
             <ImageView
                 android:id="@+id/depositicon"
@@ -49,7 +49,8 @@
             android:background="#808080"
             android:layout_width="match_parent"
             android:layout_height="1px"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -116,11 +117,43 @@
 
     </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="시간 : "
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="HH:mm"
+            android:textSize="20sp"/>
+
+    </LinearLayout>
+
     <View
         android:background="#808080"
         android:layout_width="match_parent"
         android:layout_height="1px"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp" />
 
     <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -160,7 +193,7 @@
             android:layout_marginEnd="5dp"
             android:singleLine="true"
             android:background="@null"
-            android:maxLength="12"
+            android:maxLength="8"
             android:inputType="number"/>
 
     </androidx.cardview.widget.CardView>

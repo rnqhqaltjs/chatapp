@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.chatapp.data.model.Memo
 import com.example.chatapp.databinding.AccountItemBinding
 import com.example.chatapp.ui.viewmodel.MemoViewModel
+import java.util.*
 
 class AccountAdapter(val context: Context, private var memoList:List<Memo>, private val memoViewModel: MemoViewModel) : RecyclerView.Adapter<AccountAdapter.MyViewHolder>() {
 
@@ -42,6 +43,8 @@ class AccountAdapter(val context: Context, private var memoList:List<Memo>, priv
                 binding.price.text = "-"+memo.withdraw.toString()
                 binding.price.setTextColor(Color.RED)
             }
+
+            binding.time.text= String.format(Locale.KOREA, "%02d:%02d",memo.hour,memo.minute)
 
 
             itemView.setOnClickListener {

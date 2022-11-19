@@ -37,7 +37,6 @@ class AccountCalendarFragment : Fragment() {
     private var year : Int = 0
     private var month : Int = 0
     private var day : Int = 0
-    private var a = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,11 +56,6 @@ class AccountCalendarFragment : Fragment() {
             adapter.setHasStableIds(true)
         }
 
-
-
-
-        binding.withdraw.text= "0"
-
         // 아이템을 가로로 하나씩 보여주고 어댑터 연결
         binding.recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
         binding.recyclerView.adapter = adapter
@@ -74,14 +68,12 @@ class AccountCalendarFragment : Fragment() {
 
             // 해당 날짜 데이터를 불러옴 (currentData 변경)
             memoViewModel.readDateData(year,month,day)
-            depositAll()
         }
 
         // 메모 데이터가 수정되었을 경우 날짜 데이터를 불러옴 (currentData 변경)
         memoViewModel.readAllData.observe(viewLifecycleOwner) {
             memoViewModel.readDateData(year, month, day)
             memoViewModel.dotDecorator(requireContext(),binding.calendarView,memodatabase)
-            depositAll()
         }
 
         // 현재 날짜 데이터 리스트(currentData) 관찰하여 변경시 어댑터에 전달해줌
@@ -96,29 +88,6 @@ class AccountCalendarFragment : Fragment() {
             }
             else {
                 onFabClicked()
-            }
-
-        }
-
-
-    }
-
-    private fun depositAll() {
-        val prices = ArrayList<Int>()
-
-        lifecycleScope.launch(Dispatchers.IO) {
-            val max = memodatabase.memoDao().getTodayAll(year, month, day)
-            if(max.isNotEmpty()){
-                for (i in max.indices) {
-                    val price = max[i].deposit
-                    prices.add(price)
-                }
-            }
-
-            withContext(Dispatchers.Main) {
-
-                binding.deposit.text = prices.sum().toString()
-
             }
 
         }

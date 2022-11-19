@@ -29,7 +29,7 @@ interface MemoDao {
     @Query("SELECT * FROM Memo ")
     fun getCalendarAll() : List<Memo>
 
-    // 모든 오늘 날짜를 가져옴
+    // 오늘 날짜의 값을 가져옴
     @Query("SELECT * FROM Memo WHERE year = :year AND month = :month AND day = :day")
     fun getTodayAll(year : Int, month : Int, day : Int) : List<Memo>
 

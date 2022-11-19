@@ -12,6 +12,8 @@ data class Memo(
     val description: String?,
     val deposit: Int,
     val withdraw: Int,
+    val hour: Int,
+    val minute: Int,
     val year: Int,
     val month: Int,
     val day: Int,

@@ -3,9 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/drawable/calendar_background.xml" value="0.1" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/drawable/calendar_select_background.xml" value="0.1" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_intro.xml" value="0.536" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_join.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_login.xml" value="0.19746376811594202" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_main.xml" value="0.27395833333333336" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/fragment_account_book.xml" value="0.264" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/fragment_account_calendar.xml" value="0.27395833333333336" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/item_account.xml" value="0.536" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27395833333333336" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/menu/main_menu.xml" value="0.27395833333333336" />
       </map>
     </option>
   </component>

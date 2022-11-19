@@ -3,11 +3,8 @@ package com.example.chatapp.auth
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
-import com.example.chatapp.MainActivity
-import com.example.chatapp.R
-import com.example.chatapp.databinding.ActivityJoinBinding
+import com.example.chatapp.ui.view.activity.MainActivity
 import com.example.chatapp.databinding.ActivityLoginBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth

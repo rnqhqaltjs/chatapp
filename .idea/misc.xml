@@ -5,12 +5,15 @@
       <map>
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/drawable/calendar_background.xml" value="0.1" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/drawable/calendar_select_background.xml" value="0.1" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/drawable/ic_account.xml" value="0.2265" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/account_item.xml" value="0.6578947368421053" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_account_add.xml" value="0.536" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_intro.xml" value="0.536" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_join.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_login.xml" value="0.19746376811594202" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/activity_main.xml" value="0.27395833333333336" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/fragment_account_book.xml" value="0.264" />
-        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/fragment_account_calendar.xml" value="0.27395833333333336" />
+        <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/fragment_account_calendar.xml" value="0.4957587181903864" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/layout/item_account.xml" value="0.536" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/menu/bottom_nav_menu.xml" value="0.27395833333333336" />
         <entry key="..\:/Users/Kim SeungWu/Documents/AndroidLab/chatapp/app/src/main/res/menu/main_menu.xml" value="0.27395833333333336" />

@@ -8,9 +8,10 @@ data class Memo(
 
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
-    val check: Boolean,
-    val title: String,
-    val content: String?,
+    val category: String,
+    val description: String?,
+    val deposit: Int,
+    val withdraw: Int,
     val year: Int,
     val month: Int,
     val day: Int,

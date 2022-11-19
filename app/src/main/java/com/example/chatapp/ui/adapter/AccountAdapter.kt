@@ -1,8 +1,8 @@
 package com.example.chatapp.ui.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
-import android.content.Intent
-import android.graphics.Paint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,7 +20,7 @@ class AccountAdapter(val context: Context, private var memoList:List<Memo>, priv
 
     // 뷰 홀더에 데이터를 바인딩
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
-        holder.bind(memoList[position],memoViewModel)
+        holder.bind(memoList[position])
 
     }
 
@@ -31,9 +31,18 @@ class AccountAdapter(val context: Context, private var memoList:List<Memo>, priv
 
     inner class MyViewHolder(private val binding: AccountItemBinding) : RecyclerView.ViewHolder(binding.root){
 
-        fun bind(memo:Memo, memoViewModel: MemoViewModel) {
+        @SuppressLint("SetTextI18n")
+        fun bind(memo: Memo) {
 
-            binding.title.text = memo.title
+            binding.category.text= memo.category
+            if(memo.deposit>=memo.withdraw){
+                binding.price.text = "+"+memo.deposit.toString()
+                binding.price.setTextColor(Color.BLUE)
+            } else {
+                binding.price.text = "-"+memo.withdraw.toString()
+                binding.price.setTextColor(Color.RED)
+            }
+
 
             itemView.setOnClickListener {
 

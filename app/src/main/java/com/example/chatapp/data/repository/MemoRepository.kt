@@ -25,4 +25,8 @@ class MemoRepository(private val memoDao: MemoDao) {
         return memoDao.readDateData(year, month, day)
     }
 
+    fun readMonthData(year : Int, month : Int): List<Memo> {
+        return memoDao.readMonthData(year, month)
+    }
+
 }

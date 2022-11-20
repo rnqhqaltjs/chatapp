@@ -75,44 +75,10 @@
             android:layout_weight="1" />
 
         <TextView
-            android:id="@+id/year"
+            android:id="@+id/date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="yyyy"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="년"
-            android:textSize="20sp"
-            android:layout_marginEnd="5dp"/>
-
-        <TextView
-            android:id="@+id/month"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="mm"
-            android:textSize="20sp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="월"
-            android:textSize="20sp"
-            android:layout_marginEnd="5dp"/>
-
-        <TextView
-            android:id="@+id/day"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="dd"
-            android:textSize="20sp"/>
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="일"
+            android:text="yyyy년 mm월 dd일"
             android:textSize="20sp"/>
 
     </LinearLayout>

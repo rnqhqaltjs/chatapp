@@ -2,17 +2,14 @@ package com.example.chatapp.ui.view.fragment
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.viewModelScope
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.chatapp.R
 import com.example.chatapp.data.db.MemoDatabase
 import com.example.chatapp.data.model.Memo
 import com.example.chatapp.databinding.FragmentAccountBookBinding
@@ -20,6 +17,7 @@ import com.example.chatapp.databinding.FragmentAccountCalendarBinding
 import com.example.chatapp.ui.adapter.AccountAdapter
 import com.example.chatapp.ui.view.activity.AccountAddActivity
 import com.example.chatapp.ui.viewmodel.MemoViewModel
+import com.example.chatapp.util.CalendarDecorator.MemoDecorator
 import com.prolificinteractive.materialcalendarview.CalendarDay
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -31,7 +29,7 @@ class AccountCalendarFragment : Fragment() {
     private val binding get() = _binding!!
     private val memoViewModel: MemoViewModel by viewModels() // 뷰모델 연결
     private val memoList : List<Memo> = listOf()
-    private val adapter : AccountAdapter by lazy { AccountAdapter(requireContext(),memoList,memoViewModel) } // 어댑터 선언
+    private val adapter : AccountAdapter by lazy { AccountAdapter(requireContext(), memoList) } // 어댑터 선언
     private lateinit var memodatabase: MemoDatabase
 
     private var year : Int = 0
@@ -59,6 +57,7 @@ class AccountCalendarFragment : Fragment() {
         // 아이템을 가로로 하나씩 보여주고 어댑터 연결
         binding.recyclerView.layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL,false)
         binding.recyclerView.adapter = adapter
+        binding.recyclerView.addItemDecoration(DividerItemDecoration(requireContext(),LinearLayoutManager.VERTICAL))
 
         binding.calendarView.setOnDateChangedListener { widget, date, selected ->
 
@@ -68,6 +67,7 @@ class AccountCalendarFragment : Fragment() {
 
             // 해당 날짜 데이터를 불러옴 (currentData 변경)
             memoViewModel.readDateData(year,month,day)
+
         }
 
         // 메모 데이터가 수정되었을 경우 날짜 데이터를 불러옴 (currentData 변경)
@@ -91,7 +91,6 @@ class AccountCalendarFragment : Fragment() {
             }
 
         }
-
 
     }
 

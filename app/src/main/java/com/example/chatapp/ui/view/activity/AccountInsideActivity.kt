@@ -1,41 +1,61 @@
 package com.example.chatapp.ui.view.activity
 
+import android.graphics.Color
 import android.os.Bundle
+import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.setupActionBarWithNavController
-import com.example.chatapp.R
+import com.example.chatapp.data.model.Memo
 import com.example.chatapp.databinding.ActivityAccountInsideBinding
-import com.google.android.material.snackbar.Snackbar
+import com.example.chatapp.ui.viewmodel.MemoViewModel
+import java.util.*
 
 class AccountInsideActivity : AppCompatActivity() {
 
-    private lateinit var appBarConfiguration: AppBarConfiguration
-    private lateinit var binding: ActivityAccountInsideBinding
+    private val binding: ActivityAccountInsideBinding by lazy{
+        ActivityAccountInsideBinding.inflate(layoutInflater)
+    }
+
+    private val MemoViewModel: MemoViewModel by viewModels() // 뷰모델 연결
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
-        binding = ActivityAccountInsideBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        setSupportActionBar(binding.toolbar)
+        val id = intent.getIntExtra("id",-1)
+        val category = intent.getStringExtra("category")
+        val description = intent.getStringExtra("description")
+        val deposit = intent.getIntExtra("deposit",-1)
+        val withdraw = intent.getIntExtra("withdraw",-1)
+        val hour = intent.getIntExtra("hour", -1)
+        val minute = intent.getIntExtra("minute", -1)
+        val year = intent.getIntExtra("year",-1)
+        val month = intent.getIntExtra("month",-1)
+        val day = intent.getIntExtra("day",-1)
 
-        val navController = findNavController(R.id.nav_host_fragment_content_account_inside)
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        binding.category.text = category
+        binding.description.text = description
+        binding.time.text= String.format(Locale.KOREA, "%02d시 %02d분",hour,minute)
+        binding.year.text = year.toString() + "년"
+        binding.month.text = (month+1).toString() +"월"
+        binding.day.text = day.toString()+ "일"
 
-        binding.fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
+        if(deposit==0){
+            binding.price.text = withdraw.toString()+"원"
+            binding.price.setTextColor(Color.RED)
+        } else {
+            binding.price.text = deposit.toString()+"원"
+            binding.price.setTextColor(Color.BLUE)
         }
+
+        binding.deletefab.setOnClickListener {
+
+            MemoViewModel.deleteMemo(Memo(id, category!!, description, deposit, withdraw, hour, minute, year, month, day))
+            Toast.makeText(this, "삭제 완료", Toast.LENGTH_SHORT).show()
+            finish()
+
+        }
+
     }
 
-    override fun onSupportNavigateUp(): Boolean {
-        val navController = findNavController(R.id.nav_host_fragment_content_account_inside)
-        return navController.navigateUp(appBarConfiguration)
-                || super.onSupportNavigateUp()
-    }
 }

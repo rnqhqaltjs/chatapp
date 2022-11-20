@@ -1,5 +1,6 @@
 package com.example.chatapp.ui.view.activity
 
+import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.graphics.Color
 import android.os.Build
@@ -8,6 +9,7 @@ import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContentProviderCompat.requireContext
 import com.example.chatapp.data.model.Memo
 import com.example.chatapp.databinding.ActivityAccountAddBinding
 import com.example.chatapp.ui.viewmodel.MemoViewModel
@@ -32,13 +34,11 @@ class AccountAddActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
 
-        val year = intent.getIntExtra("year", -1)
-        val month = intent.getIntExtra("month", -1)
-        val day = intent.getIntExtra("day", -1)
+        var years = intent.getIntExtra("year", -1)
+        var months = intent.getIntExtra("month", -1)
+        var day = intent.getIntExtra("day", -1)
 
-        binding.year.text = year.toString()
-        binding.month.text = month.toString()
-        binding.day.text = day.toString()
+        binding.date.text = "${years}년 " + "${months+1}월 " + "${day}일"
         binding.time.text = String.format(Locale.KOREA, "%02d:%02d",hour,minute)
 
         binding.depositicon.setOnClickListener{
@@ -57,6 +57,18 @@ class AccountAddActivity : AppCompatActivity() {
             classify = 1
         }
 
+        binding.date.setOnClickListener {
+            val dateSetListener = DatePickerDialog.OnDateSetListener { _, year, month, dayOfMonth ->
+                years = year
+                months = month
+                day =dayOfMonth
+
+                binding.date.text = "${years}년 " + "${months+1}월 " + "${day}일"
+
+            }
+            DatePickerDialog(this, dateSetListener, years,months,day).show()
+        }
+
         binding.time.setOnClickListener {
             getTime()
         }
@@ -65,28 +77,29 @@ class AccountAddActivity : AppCompatActivity() {
 
             val category = binding.category.text.toString()
             val description = binding.description.text.toString()
-            val amount = binding.amount.text.toString().toInt()
 
             if (category.isEmpty()) {
 
                 Toast.makeText(this, "분류를 입력해주세요", Toast.LENGTH_SHORT).show()
 
-            } else if(binding.amount.text.isEmpty()){
+            } else if(binding.amount.text.toString().isEmpty() || binding.amount.text.toString().toInt()==0){
 
-                Toast.makeText(this, "금액을 입력해주세요", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "금액을 제대로 입력해주세요", Toast.LENGTH_SHORT).show()
 
             } else {
 
+                val amount = binding.amount.text.toString().toInt()
+
                 if(classify==0){
 
-                    val memo = Memo(0, category, description, amount,0,hour,minute, year, month, day)
+                    val memo = Memo(0, category, description, amount,0,hour,minute, years, months, day)
                     MemoViewModel.addMemo(memo)
                     Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
                     finish()
 
                 } else if(classify==1){
 
-                    val memo = Memo(0,category, description, 0, amount,hour,minute, year, month, day)
+                    val memo = Memo(0,category, description, 0, amount,hour,minute, years, months, day)
                     MemoViewModel.addMemo(memo)
                     Toast.makeText(this, "저장 완료", Toast.LENGTH_SHORT).show()
                     finish()
